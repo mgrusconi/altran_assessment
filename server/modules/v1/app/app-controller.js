@@ -42,7 +42,7 @@ class AppController{
           });
         }
       } else {
-        let file_2_lines = data.split('\n').slice(0,-1);
+        let file_2_lines = data.split('\n');
         fs.readFile(config.resources.files + file1 + '.md', {encoding: 'utf8'}, (err, data) => {
           if(err) {
             if(err.code == 'ENOENT'){
@@ -57,7 +57,7 @@ class AppController{
               });
             }
           } else {
-            let file_1_lines = data.split('\n').slice(0,-1);
+            let file_1_lines = data.split('\n');
             let final_file_lines = file_2_lines.slice();
             for (let i = 0, len = file_1_lines.length; i < len; i++) {
               if(final_file_lines.indexOf(file_1_lines[i]) == -1){
@@ -73,7 +73,7 @@ class AppController{
                 });
               } else {
                 return res.status(200).json({
-                  'message': 'New file created',
+                  'message': 'New file "' + output + '.md" has been created',
                   'text_file': text_file
                 });
               }
