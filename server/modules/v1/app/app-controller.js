@@ -11,7 +11,6 @@
  *
  */
 
-import url  from 'url';
 import fs  from 'fs';
 import config from '../../../config/';
 
@@ -25,10 +24,8 @@ class AppController{
    * @return \Json
    */
   merge(req, res) {
-    const url_parts = url.parse(req.url, true);
-    const query = url_parts.query;
-    const file1 = query.file;
-    const file2 = query.extend;
+    const file1 = req.query.file;
+    const file2 = req.query.extend;
     const output = file2 + '_' + file1;
     
     let file_1_lines = '';
