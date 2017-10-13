@@ -18,9 +18,23 @@ describe('Merge Test', ()=>{
 
   let messages = {
     'created': 'New file "file_2_file_1.md" has been created',
+    'api_key': 'Invalid API Key',
     'not_found': 'not Found',
     'text': 'Hola yo soy el fichero 2\nA ver si puedo explicar que soy\nHola yo soy el fichero 1'
   };
+
+  it('Error - API KEY', (done) => {   
+    request(app)
+      .get('/api/merge/file_1/file_2')
+      .set({'x-key': '2fvTdG53VCp6z8ZbV66'})
+      .expect('Content-Type', /json/)
+      .expect(401)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.body.message.should.string(messages.api_key);
+        done();
+      });
+  });
 
   it('Error - merge file1 not found', (done) => {   
     request(app)

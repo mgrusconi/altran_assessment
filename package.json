@@ -16,7 +16,6 @@
   "author": "Marcelo Rusconi",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.18.1",
     "express": "^4.13.4",
     "lodash": "^4.17.4",
     "swagger-jsdoc": "^1.9.6",
