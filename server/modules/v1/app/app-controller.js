@@ -11,6 +11,7 @@
  *
  */
 
+import url  from 'url';
 import fs  from 'fs';
 import config from '../../../config/';
 
@@ -24,9 +25,10 @@ class AppController{
    * @return \Json
    */
   merge(req, res) {
-    
-    const file1 = req.params.file1;
-    const file2 = req.params.file2;
+    const url_parts = url.parse(req.url, true);
+    const query = url_parts.query;
+    const file1 = query.file;
+    const file2 = query.extend;
     const output = file2 + '_' + file1;
     
     let file_1_lines = '';
@@ -37,18 +39,18 @@ class AppController{
       file_2_lines = this.readFile(file2);
     } catch (err) {
       return res.status(404).json({
-        'message': 'File ' + file2 + ' not Found',
+        'message': 'File not Found',
         'err': err.toString()
       });
     }
 
     file_1_lines = file_1_lines.split('\n');
     file_2_lines = file_2_lines.split('\n');
-    let final_file_lines = file_2_lines.slice();
+    let final_file_lines = file_1_lines.slice();
     
-    for (let i = 0, len = file_1_lines.length; i < len; i++) {
-      if(file_2_lines.indexOf(file_1_lines[i]) == -1){
-        final_file_lines.push(file_1_lines[i]);
+    for (let i = 0, len = file_2_lines.length; i < len; i++) {
+      if(file_1_lines.indexOf(file_2_lines[i]) == -1){
+        final_file_lines.push(file_2_lines[i]);
       }
     }
 

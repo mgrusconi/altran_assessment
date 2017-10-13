@@ -17,15 +17,15 @@ const request: supertest.SuperTest<supertest.Test> = supertest(app);
 describe('Merge Test', ()=>{
 
   let messages = {
-    'created': 'New file "file_2_file_1.md" has been created',
+    'created': 'New file "fichero2_fichero1.md" has been created',
     'api_key': 'Invalid API Key',
     'not_found': 'not Found',
-    'text': 'Hola yo soy el fichero 2\nA ver si puedo explicar que soy\nHola yo soy el fichero 1'
+    'text': 'Hola yo soy el fichero 1\nA ver si puedo explicar que soy\nHola yo soy el fichero 2'
   };
 
   it('Error - API KEY', (done) => {   
     request(app)
-      .get('/api/merge/file_1/file_2')
+      .get('/api/merge?file=fichero1&extend=fichero2')
       .set({'x-key': '2fvTdG53VCp6z8ZbV66'})
       .expect('Content-Type', /json/)
       .expect(401)
@@ -38,7 +38,7 @@ describe('Merge Test', ()=>{
 
   it('Error - merge file1 not found', (done) => {   
     request(app)
-      .get('/api/merge/error1/file_2')
+      .get('/api/merge?file=error1&extend=fichero2')
       .set({'x-key': '2fvTdG53VCp6z8ZbV66h'})
       .expect('Content-Type', /json/)
       .expect(404)
@@ -51,7 +51,7 @@ describe('Merge Test', ()=>{
 
   it('Error - merge file2 not found', (done) => {   
     request(app)
-      .get('/api/merge/file_1/error2')
+      .get('/api/merge?file=fichero1&extend=error2')
       .set({'x-key': '2fvTdG53VCp6z8ZbV66h'})
       .expect('Content-Type', /json/)
       .expect(404)
@@ -64,7 +64,7 @@ describe('Merge Test', ()=>{
 
   it('Successful - Merge - Property', (done) => {   
     request(app)
-      .get('/api/merge/file_1/file_2')
+      .get('/api/merge?file=fichero1&extend=fichero2')
       .set({'x-key': '2fvTdG53VCp6z8ZbV66h'})
       .expect('Content-Type', /json/)
       .expect(200)
@@ -77,7 +77,7 @@ describe('Merge Test', ()=>{
 
   it('Successful - Merge - Message', (done) => {   
     request(app)
-      .get('/api/merge/file_1/file_2')
+      .get('/api/merge?file=fichero1&extend=fichero2')
       .set({'x-key': '2fvTdG53VCp6z8ZbV66h'})
       .expect('Content-Type', /json/)
       .expect(200)
@@ -90,7 +90,7 @@ describe('Merge Test', ()=>{
 
   it('Successful - Merge - Text', (done) => {   
     request(app)
-      .get('/api/merge/file_1/file_2')
+      .get('/api/merge?file=fichero1&extend=fichero2')
       .set({'x-key': '2fvTdG53VCp6z8ZbV66h'})
       .expect('Content-Type', /json/)
       .expect(200)

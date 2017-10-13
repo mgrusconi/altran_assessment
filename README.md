@@ -36,9 +36,6 @@ El entorno se puede levantar de 2 maneras diferentes, con Docker o instalando lo
 
 ## Suposiciones
 1. El resultado de la unión se guarda en un nuevo archivo y se devuelve en un JSON
-2. Se da prioridad al enunciado y no al ejemplo, el contenido del fichero 1 se agrega al final del contenido del fichero 2
-3. Si el fichero 1 tiene contenido repetido en sí mismo pero este no se encuentra en el fichero 2, este pasa completo en la unión
-4. Se reemplaza queryString por URL Amigable
 
 ## EndPoints
 
@@ -46,17 +43,17 @@ El entorno se puede levantar de 2 maneras diferentes, con Docker o instalando lo
 
 * La API cuenta con una validación por API-KEY, sin esta no se puede acceder al EndPoint
 
-### /api/merge/{file_1}/{file_2} - Método que permite unir el contenido inexistente del fichero_1 al fichero_2 y enlazarlo al final.
+### /api/merge?file=fichero1&extend=fichero2 - Método que permite unir el contenido inexistente del fichero_1 al fichero_2 y enlazarlo al final.
 
 **Request**
 ``` 
-/api/merge/file_1/file_2
+/api/merge?file=fichero1&extend=fichero2
 ``` 
 
 **Response (code 200)**
 ``` 
 {
-  "message": "New file \"file_2_file_1.md\" has been created",
+  "message": "New file \"fichero1_fichero2.md\" has been created",
   "text_file": "Hola yo soy el fichero 2\nA ver si puedo explicar que soy\nHola yo soy el fichero 1"
 }
 ``` 
@@ -64,7 +61,7 @@ El entorno se puede levantar de 2 maneras diferentes, con Docker o instalando lo
 **Response (code 404)**
 ``` 
 {
-  "message": "File file_2 not Found",
+  "message": "File not Found",
   "err": "Error: Error: ENOENT: no such file or directory, open '/usr/src/app/built/config/../../files/file_.md'"
 }
 ```

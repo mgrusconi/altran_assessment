@@ -13,7 +13,7 @@ const router = new Router();
 
 /**
  * @swagger
- * /api/merge/{file1}/{file2}:
+ * /api/merge?file=fichero1&extend=fichero2:
  *   get:
  *     tags:
  *       - API v1
@@ -22,18 +22,6 @@ const router = new Router();
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: file1
- *         in: path
- *         description: Nombre del archivo a Unir
- *         required: true
- *         type: string
- *         default: file_1
- *       - name: file2
- *         in: path
- *         description: Nombre del archivo a Base
- *         required: true
- *         type: string
- *         default: file_2
  *       - name: x-key
  *         in: header
  *         description: API key
@@ -48,6 +36,6 @@ const router = new Router();
  *           $ref: ''
  */
 
-router.route('/merge/:file1/:file2').get((...args) => controller.merge(...args));
+router.route('/merge').get((...args) => controller.merge(...args));
 
 module.exports = router;
