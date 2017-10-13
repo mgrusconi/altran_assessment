@@ -35,16 +35,16 @@ El entorno se puede levantar de 2 maneras diferentes, con Docker o instalando lo
 3. Abrir en el navegador http://localhost:9000/
 
 ## Suposiciones
-1. El resultado de la union se guarda en un nuevo archivo y se devuelve en un JSON
-2. Se da prioridad al enunciado y no al ejemplo, el contenido del fichero 1 se agraga al final del contenido del fichero 2
-3. Si el fichero 1 tiene contenido repetido en si mismo pero este no se encuentra en el fichero 2, este pasa completo en la union
-4. Se remplazo queryString por URL Amigable
+1. El resultado de la unión se guarda en un nuevo archivo y se devuelve en un JSON
+2. Se da prioridad al enunciado y no al ejemplo, el contenido del fichero 1 se agrega al final del contenido del fichero 2
+3. Si el fichero 1 tiene contenido repetido en sí mismo pero este no se encuentra en el fichero 2, este pasa completo en la unión
+4. Se reemplaza queryString por URL Amigable
 
 ## EndPoints
 
 * Swagger: En la ruta http://localhost:9000/ tiene toda la documentación de las apis.
 
-* La API cuenta con una validacion API-KEY, sin esta no se puede acceder al EndPoint
+* La API cuenta con una validación por API-KEY, sin esta no se puede acceder al EndPoint
 
 ### /api/merge/{file_1}/{file_2} - Método que permite unir el contenido inexistente del fichero_1 al fichero_2 y enlazarlo al final.
 
@@ -82,29 +82,29 @@ El entorno se puede levantar de 2 maneras diferentes, con Docker o instalando lo
 * Ejecutar `npm test` esto ejecuta los test con Mocha y Chai.
 * Ejecutar `npm run test:watch` esto ejecuta los test con Mocha y Chai y se quedará mirando los cambios de los archivos y correrá los test automáticamente.
 
-## Frameworks y Librerias
+## Frameworks y Librerías
 ### Framework
-"express": "^4.13.4"
+- "express": "^4.13.4"
 
 ### Task Manager
-"gulp": "^3.9.1"
+- "gulp": "^3.9.1"
 
 ### Utils
-"lodash": "^4.17.4"
-"babel-eslint": "^8.0.0"
-"gulp-eslint": "^4.0.0"
+- "lodash": "^4.17.4"
+- "babel-eslint": "^8.0.0"
+- "gulp-eslint": "^4.0.0"
 
 ### Documentation
-"swagger-jsdoc": "^1.9.6"
-"swagger-ui-express": "^2.0.1"
+- "swagger-jsdoc": "^1.9.6"
+- "swagger-ui-express": "^2.0.1"
 
 ### Transpilers
-"babel": "^6.23.0"
-"babel-preset-es2015": "^6.24.1"
-"babel-preset-es2016": "^6.24.1"
-"gulp-babel": "^6.1.2"
+- "babel": "^6.23.0"
+- "babel-preset-es2015": "^6.24.1"
+- "babel-preset-es2016": "^6.24.1"
+- "gulp-babel": "^6.1.2"
 
 ### Test
-"mocha": "^3.5.3"
-"chai": "^4.1.2"
-"supertest": "^3.0.0"
+- "mocha": "^3.5.3"
+- "chai": "^4.1.2"
+- "supertest": "^3.0.0"
